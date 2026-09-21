@@ -1,11 +1,11 @@
 ## 1. Addition of RS and basal essential media to pediatric cancer GEMs
  https://github.com/Subasree514/Pediatric-cancer-analysis/tree/main/GEM-modification-RS-integration
 
-01_grrules_create.m\\
-02_mem_constraint.m\\
-03_mem_sink.m\\
-04_rs_merge.m\\
-05_loop_check.m\\
+01_grrules_create.m\
+02_mem_constraint.m\
+03_mem_sink.m\
+04_rs_merge.m\
+05_loop_check.m\
 
 ### Additional files:
 -loopcheck.m - to check the presence of thermodynamically infeasible cycles\\
