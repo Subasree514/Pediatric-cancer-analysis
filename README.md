@@ -17,7 +17,8 @@
 10b_humantask_statistic.m
 
 ## 2.  Generation of parsimonious flux data and generation of machine learning features from flux data
-https://github.com/Subasree514/Pediatric-cancer-analysis/tree/main/Flux-analysis\
+https://github.com/Subasree514/Pediatric-cancer-analysis/tree/main/Flux-analysis
+
 06_pfba.ipynb\
 07_feature_generation.ipynb
 
@@ -25,4 +26,6 @@ https://github.com/Subasree514/Pediatric-cancer-analysis/tree/main/Flux-analysis
 09_systems_analysis.ipynb
 
 ## 3. Machine learning and feature interpretation using SHAP 
+https://github.com/Subasree514/Pediatric-cancer-analysis/tree/main/Machine-learning-analysis
+
 08_ML_analysis.ipynb
