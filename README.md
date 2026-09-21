@@ -14,15 +14,15 @@
 
 ### Basic human tasks performed by GEMs:
 10a_Cobra_humantasks.m\
-10b_humantask_statistic.m\
+10b_humantask_statistic.m
 
 ## 2.  Generation of parsimonious flux data and generation of machine learning features from flux data
 https://github.com/Subasree514/Pediatric-cancer-analysis/tree/main/Flux-analysis\
 06_pfba.ipynb\
-07_feature_generation.ipynb\
+07_feature_generation.ipynb
 
 ### Systems-level analysis of SHAP important metabolic pathways 
 09_systems_analysis.ipynb\
 
 ## 3. Machine learning and feature interpretation using SHAP 
-08_ML_analysis.ipynb\
+08_ML_analysis.ipynb
