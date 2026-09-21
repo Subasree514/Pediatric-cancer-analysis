@@ -26,6 +26,6 @@ https://github.com/Subasree514/Pediatric-cancer-analysis/tree/main/Flux-analysis
 09_systems_analysis.ipynb
 
 ## 3. Machine learning and feature interpretation using SHAP 
-https://github.com/Subasree514/Pediatric-cancer-analysis/tree/main/Machine-learning-analysis
+https://github.com/Subasree514/Pediatric-cancer-analysis/tree/main/Machine-learning-analysis-SHAP-interpretation
 
 08_ML_analysis.ipynb
