@@ -1,0 +1,128 @@
+%% basal essential media (bme) nutrients 
+memmets={'arg_L[e]'
+'Lcystin[e]'
+'his_L[e]'
+'ile_L[e]'
+'leu_L[e]'
+'lys_L[e]'
+'met_L[e]'
+'phe_L[e]'
+'thr_L[e]'
+'trp_L[e]'
+'tyr_L[e]'
+'val_L[e]'
+'btn[e]'
+'chol[e]'
+'pnto_R[e]'
+'fol[e]'
+'ncam[e]'
+'pydxn[e]'
+'ribflv[e]'
+'thm[e]'
+'inost[e]'
+'ca2[e]'
+%'mg2[e]'
+'k[e]'
+'hco3[e]'
+'na1[e]'
+'cl[e]'
+'so4[e]'
+'pi[e]'
+'glc_D[e]'
+'o2[e]'};
+model3=m;
+model3=addExchangeRxn(model3,memmets);
+%%
+contains(model3.rxns,'EX_');
+find(ans==1);
+model3.lb(ans)=0;
+contains(model3.rxns,'EX_');
+find(ans==1);
+model3.ub(ans)=1000;
+memexchanges={'EX_arg_L[e]'
+'EX_Lcystin[e]'
+'EX_his_L[e]'
+'EX_ile_L[e]'
+'EX_leu_L[e]'
+'EX_lys_L[e]'
+'EX_met_L[e]'
+'EX_phe_L[e]'
+'EX_thr_L[e]'
+'EX_trp_L[e]'
+'EX_tyr_L[e]'
+'EX_val_L[e]'
+'EX_btn[e]'
+'EX_chol[e]'
+'EX_pnto_R[e]'
+'EX_fol[e]'
+'EX_ncam[e]'
+'EX_pydxn[e]'
+'EX_ribflv[e]'
+'EX_thm[e]'
+'EX_inost[e]'
+'EX_ca2[e]'
+%'EX_mg2[e]'
+'EX_k[e]'
+'EX_hco3[e]'
+'EX_pi[e]'
+'EX_glc_D[e]'
+'EX_cl[e]'
+'EX_so4[e]'
+'EX_na1[e]'
+'EX_o2[e]'};
+memconstraints=[0.009424817
+0.00484074
+0.004887586
+0.018794818
+0.018794818
+0.018872123
+0.004766626
+0.009469697
+0.019098549
+0.001856803
+0.009433415
+0.019020332
+0.000388102
+0.000676407
+0.000198526
+0.000214732
+0.000776205
+0.000464201
+2.51854E-05
+0.000281
+0.001052189
+0.170625171
+%0.077099116
+0.505050505
+2.48015873
+0.09606939
+0.526094276
+11.77807902
+0.077099116
+13.67863146
+2];
+% add transport reactions for the media metabolites for uptake, if not
+% already present
+ex=findRxnsFromSubSystem(model3,'Transport, extracellular');
+mets_ex=unique(findMetsFromRxns(model3,ex));
+met_tr_add=unique(setdiff(memmets,mets_ex));
+met_tr=unique(met_tr_add);
+for i = 1:length(met_tr);
+    met_tr_c_add(i,:)=strsplit(string(met_tr(i)),'[')
+end
+met_tr_c=unique(met_tr_c_add(:,1))
+for i=1:length(met_tr_c);
+    met_tr_c(i) = strcat(string(met_tr_c(i)),'[c]');
+end
+for i=1:length(met_tr);
+    formula_tr(i) = strjoin(string(met_tr(i,1)) + " <=> " + string(met_tr_c(i,1)));
+end
+mem_tr=unique(formula_tr)';
+rxnNamesnew={'U1';'U2';'U3';'U4';'U5';'U6';'U7';'U8';'U9';'U10';'U11';'U12';'U13';'U14';'U15';'U16';'U17';'U18';'U19';'U20';'U21';'U22';'U23';'U24';'U25';'U26';'U27';'U28';'U29';'U30';'U31';'U32';'U33';'U34';'U35';'U36';'U37';'U38';'U39';'U40';'U41';'U42';'U43';'U44';'U45';'U46';'U47';'U48';'U49';'U50'};
+memsubsytem={'mem_transports'};
+for i = 1:length(mem_tr)
+model3 = addReaction(model3,rxnNamesnew{i,1},'reactionFormula',mem_tr{i,1},'subSystem',memsubsytem{1,1});
+end
+findRxnIDs(model3,memexchanges);
+model3.lb(ans)=-1*memconstraints;
+%%%
